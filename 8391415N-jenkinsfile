@@ -33,15 +33,15 @@ pipeline {
                 """
             }
         }
-        stage('ST4-Parallel-8391415N') {
 
- /*           steps {
+        stage('ST4-Parallel-8391415N') {
+            steps {
                 sh """
                 echo "ST4-Parallel-8391415N: Security Scrutinises"
                 """
-            } */
-            sh 'echo "ST4-Parallel-8391415N: Security Scrutinises"'
+            }
 /*
+            sh 'echo "ST4-Parallel-8391415N: Security Scrutinises"'
             parallel {
                 stage('ST4A-8391415N') {
                     steps {
