@@ -64,18 +64,15 @@ pipeline {
         }
 
         stage('ST5-8391415N') {
-
             input {
                 message "Continue the pipeline?"
                 ok "ST5-8391415N : Continue the pipeline."
             }
-/*
             steps {
                 sh """
                 echo "ST5-8391415N: Continue the pipeline."
                 """
             }
-*/
         }
         stage('ST6-8391415N') {
             steps {
