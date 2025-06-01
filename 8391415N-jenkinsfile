@@ -43,7 +43,11 @@ pipeline {
             }
 */
             parallel {
-                echo "ST4-Parallel-8391415N: Security Scrutinises"
+                steps {
+                    sh """
+                    echo "ST4-Parallel-8391415N: Security Scrutinises"
+                    """
+                }
                 stage('ST4A-8391415N') {
                     steps {
                         sh """
