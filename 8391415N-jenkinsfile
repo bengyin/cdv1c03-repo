@@ -64,6 +64,7 @@ pipeline {
         }
 
         stage('ST5-8391415N') {
+
             input {
                 message "Continue the pipeline?"
                 ok "ST5-8391415N : Continue the pipeline."
