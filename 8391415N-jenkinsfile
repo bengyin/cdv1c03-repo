@@ -46,12 +46,18 @@ pipeline {
                 stage('ST4A-8391415N') {
                     steps {
                         sh """
+                        echo "ST4-Parallel-8391415N: Security Scrutinises"
+                        """
+                        sh """
                         echo "ST4A-8391415N: SQLI Check Completed"
                         """
                     }
                 }
                 stage('ST4B-8391415N') {
                     steps {
+                        sh """
+                        echo "ST4-Parallel-8391415N: Security Scrutinises"
+                        """
                         sh """
                         echo "ST4B-8391415N: XSS Check Completed"
                         """
