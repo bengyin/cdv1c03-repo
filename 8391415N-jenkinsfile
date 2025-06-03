@@ -20,6 +20,7 @@ pipeline {
         }
         stage('ST2-8391415N') {
             steps {
+                sh 'docker rm -f server1-8391415n'
                 sh 'docker run -d -it -p 32700:80 --name server1-8391415n svr-image-8391415n'
                 sh """
                 echo "ST2-8391415N: Server1 is successfully created"
