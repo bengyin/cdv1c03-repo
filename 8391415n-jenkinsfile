@@ -47,9 +47,11 @@ pipeline {
             parallel {
                 stage('ST4A-8391415n') {
                     steps {
+/*
                         sh """
                         echo "ST4-Parallel-8391415n: Security Scrutinises"
                         """
+*/
                         sh """
                         echo "ST4A-8391415n: SQLI Check Completed"
                         """
@@ -57,9 +59,11 @@ pipeline {
                 }
                 stage('ST4B-8391415n') {
                     steps {
+/*
                         sh """
                         echo "ST4-Parallel-8391415n: Security Scrutinises"
                         """
+*/
                         sh """
                         echo "ST4B-8391415n: XSS Check Completed"
                         """
