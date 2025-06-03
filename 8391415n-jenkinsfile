@@ -1,0 +1,90 @@
+pipeline {
+    agent {
+        node {
+            label 'master'
+        }
+    }
+    options {
+        buildDiscarder logRotator( 
+                    daysToKeepStr: '15', 
+                    numToKeepStr: '10'
+            )
+    }
+    stages {   
+        stage('ST1-8391415n') {
+            steps {
+                sh """
+                echo "ST1-8391415n: Setup Release Environment Completed."
+                """
+            }
+        }
+        stage('ST2-8391415n') {
+            steps {
+                sh 'docker rm -f server1-8391415n'
+                sh 'docker run -d -it -p 32700:80 --name server1-8391415n svr-image-8391415n'
+                sh """
+                echo "ST2-8391415n: Server1 is successfully created"
+                """
+            }
+        }
+
+        stage('ST3-8391415n') {
+            steps {
+                sh """
+                echo "ST3-8391415n: Server1 is healthy – Health check done"
+                """
+            }
+        }
+
+        stage('ST4-Parallel-8391415n') {
+/*
+            steps {
+                sh """
+                echo "ST4-Parallel-8391415n: Security Scrutinises"
+                """
+            }
+*/
+            parallel {
+                stage('ST4A-8391415n') {
+                    steps {
+                        sh """
+                        echo "ST4-Parallel-8391415n: Security Scrutinises"
+                        """
+                        sh """
+                        echo "ST4A-8391415n: SQLI Check Completed"
+                        """
+                    }
+                }
+                stage('ST4B-8391415n') {
+                    steps {
+                        sh """
+                        echo "ST4-Parallel-8391415n: Security Scrutinises"
+                        """
+                        sh """
+                        echo "ST4B-8391415n: XSS Check Completed"
+                        """
+                    }
+                }
+            }
+        }
+
+        stage('ST5-8391415n') {
+            input {
+                message "Continue the pipeline?"
+                ok "Proceed"
+            }
+            steps {
+                sh """
+                echo "ST5-8391415n: Continue the pipeline."
+                """
+            }
+        }
+        stage('ST6-8391415n') {
+            steps {
+                sh """
+                echo "ST6-8391415n: Ready for next phase"
+                """
+            }
+        }
+    }   
+}
